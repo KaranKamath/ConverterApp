@@ -1,5 +1,31 @@
 extends layout
 
 block content
-  h1= title
+  h1= "Binary to Decimal Convertor"
   p Welcome to #{title}
+  div
+    p
+        form
+            label Enter number of bits:
+            select(id="numBits")
+                option(value=2) 2
+                option(value=4) 4
+                option(value=8) 8
+                option(value=16) 16
+                option(value=32 selected="selected") 32
+                option(value=64) 64
+            br
+            label Enter binary number:
+            input(type="text", pattern=[0-1] id="binaryNumber") 
+            br
+            label Signed/Unsigned:
+            select(id="signed")
+                option(value="true") signed
+                option(value="false") unsigned
+            br
+            input(type="button" id="submitButton" value="Calculate")
+    p
+        label Decimal: 
+        input(type="text" id="decimalNumber" readonly)
+        script(type="text/javascript" src="/js/jquery-2.1.0.min.js")
+        script(type="text/javascript" src="/js/update.js")
