@@ -1,31 +1,35 @@
 extends layout
 
 block content
-  h1= "Binary to Decimal Convertor"
-  div
-    p
-        form
-            div(class="form-group")
-                label Enter number of bits:
-                select(id="numBits")
-                    option(value=2) 2
-                    option(value=4) 4
-                    option(value=8) 8
-                    option(value=16) 16
-                    option(value=32 selected="selected") 32
-                    option(value=64) 64
-                br
-                label Enter binary number:
-                input(type="text", pattern=[0-1] id="binaryNumber") 
-                br
-                label Signed/Unsigned:
-                select(id="signed")
-                    option(value="true") signed
-                    option(value="false") unsigned
-                br
-                input(type="button" class="btn" id="submitButton" value="Calculate")
-    p
-        label Decimal: 
-        input(type="text" id="decimalNumber" readonly)
-        script(type="text/javascript" src="/js/jquery-2.1.0.min.js")
-        script(type="text/javascript" src="/js/update.js")
+  div(class="container")
+      h1= "Binary to Decimal Convertor"
+      div(class="container")
+        p
+            form
+                div(class="form-group")
+                    label Enter number of bits:
+                    select(id="numBits" class="form-control")
+                        option(value=2) 2
+                        option(value=4) 4
+                        option(value=8) 8
+                        option(value=16) 16
+                        option(value=32 selected="selected") 32
+                        option(value=64) 64
+                    br
+                    label Enter binary number:
+                    input(type="text", class="form-control" id="binaryNumber") 
+                    br
+                    label Signed/Unsigned: 
+                    select(id="signed" class="form-control")
+                        option(value="true") signed
+                        option(value="false") unsigned
+                    br
+                    br
+                    input(type="button" class="btn btn-primary" id="submitButton" value="Calculate")
+                    br
+                    br
+        p(id="errorPane" class="bg-danger")
+        p
+            label Decimal: 
+            input(type="text" id="decimalNumber" readonly)
+            script(type="text/javascript" src="/js/update.js")
