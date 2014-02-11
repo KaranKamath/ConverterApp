@@ -2,6 +2,7 @@ var error;
 $(document).ready(function() {
     $("#submitButton").on("click", function (event){
         event.preventDefault();
+        blankOutputs();
         var numBits = parseInt($("#numBits option:selected").val(), 10);
         var inputBinaryNumber = $("#binaryNumber").val().trim();
         var signed = $("#signed option:selected").val();
@@ -9,6 +10,7 @@ $(document).ready(function() {
             inputBinaryNumber = "0" + inputBinaryNumber;
         }
         if (isValid(numBits, inputBinaryNumber)) {
+
             if (signed == "false" || inputBinaryNumber.charAt(0) == "0") {
                 $("#decimalNumber").val(parseInt(inputBinaryNumber, 2));
             } else {
@@ -18,7 +20,7 @@ $(document).ready(function() {
             }
             error = "";
         } else {
-            blankOutputs();
+            printError();
         }
     });
 });
@@ -69,6 +71,10 @@ function containsIllegalDigits (inputBinaryNumber) {
 
 function blankOutputs() {
     $("#decimalNumber").val("");
-    console.log(error);
+//    console.log(error);
+    $("#errorPane").text("");
+}
+
+function printError() {
     $("#errorPane").text(error);
 }
